@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/User"); // ✅ Import MongoDB model
+const User = require("../models/User");
 
-const JWT_SECRET = "supersecretkey"; // Store in .env in production
+const JWT_SECRET = process.env.JWT_SECRET || "fallbacksecret"; // ✅ Environment variable
 
 // 🔐 Register
 router.post("/register", async (req, res) => {
@@ -21,18 +21,13 @@ router.post("/register", async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({
-      username,
-      email,
-      password: hashedPassword,
-    });
-
+    const newUser = new User({ username, email, password: hashedPassword });
     await newUser.save();
 
     const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
     res.status(201).json({ token });
   } catch (err) {
-    console.error("Registration error:", err);
+    console.error("Registration error:", err.message);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -59,12 +54,12 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
     res.status(200).json({ token });
   } catch (err) {
-    console.error("Login error:", err);
+    console.error("Login error:", err.message);
     res.status(500).json({ message: "Server error" });
   }
 });
 
-// 🔒 Protected dashboard
+// 🔒 Protected Route (Dashboard)
 router.get("/dashboard", (req, res) => {
   res.json({ message: "Welcome to your dashboard" });
 });
