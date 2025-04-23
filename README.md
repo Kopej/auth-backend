@@ -1,10 +1,10 @@
-User Authentication API
+User Authentication API:
 
 A secure and scalable user authentication system built with Node.js, Express, MongoDB (Atlas), and JWT. This API provides endpoints for user registration and login, and is ready for integration with web or mobile applications.
 
 ---
 
-Features
+Features:
 
 - User registration with hashed passwords (bcrypt)
 - User login with JWT token generation
@@ -15,7 +15,7 @@ Features
 
 ---
 
-Base URL (Local)
+Base URL (Local):
 
 http://localhost:5000/api/auth
 
@@ -24,7 +24,7 @@ http://localhost:5000/api/auth
 
 ---
 
-API Endpoints
+API Endpoints:
 
 Register a New User
 
@@ -82,7 +82,7 @@ Auth: bcryptjs, JSON Web Tokens (JWT)
 
 Tools: Postman, Render, GitHub
 
-How to Test Locally
+How to Test Locally:
 Clone the repo:
 
 git clone https://github.com/your-username/auth-backend.git
@@ -100,7 +100,7 @@ Start the server:
 node server.js
 Test the endpoints via Postman at http://localhost:5000/api/auth.
 
-Folder Structure
+Folder Structure:
 
 auth-backend/
 │
@@ -113,15 +113,15 @@ auth-backend/
 ├── package.json
 └── README.md
 
-Screenshots
+Screenshots:
 See /screenshots folder or attached documentation for sample Postman tests.
 
-Mobile App Integration
+Mobile App Integration:
 These endpoints are RESTful and can be used directly by a mobile app frontend (e.g., React Native or Flutter). Simply point mobile HTTP requests to:
 
 https://auth-backend-j0sy.onrender.com
 
-Author
+Author:
 Peter Sankale Kopejo
 Backend Developer | GIS Analyst | Python Automation Enthusiast
 
